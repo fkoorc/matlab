@@ -1,0 +1,37 @@
+%% BCT
+
+%
+%
+
+im = imread('lena.jpg');
+
+
+function out = btc(im) 
+    bs = 4;%block size
+    [height,width] = size(im);
+    impad = padarray(im,[bs-1 bs-1], 'symmetric','post');%圖片擴張到bs的倍數
+    out = zeros(height,width,'unit8');
+        
+%     a = mean(im) - std(im)*sqrt( q/(m-q) );
+%     b = mean(im) + std(im)*sqrt( (m-q)/q );
+%     
+%     g = im>mean(im);
+%     ind = zeros[height,weight];
+
+    for j=1:4:height
+        for i=1:4:width
+            
+            lag = impad(j:j+3,i:i+3);
+            u = mean(lag(:));
+            s = std(double(A(:)),1);% 0 = /n-1, 1 = /n
+            temp = lag>u;
+            q = sum(B(:));
+            a = round( mean(im) - std(im)*sqrt( q/(m-q) ));
+            b = round( mean(im) + std(im)*sqrt( (m-q)/q ));
+            out(y:y+3,x:x+3) = B .*b +~B .* a;
+        end
+    end
+        
+            
+
+
